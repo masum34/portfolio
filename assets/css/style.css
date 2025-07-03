@@ -678,38 +678,6 @@ main {
   line-height: 1.6;
 }
 
-/** #clients */
-
-.clients { margin-bottom: 15px; }
-
-.clients-list {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 50px;
-  margin: 0 -15px;
-  padding: 25px;
-  padding-bottom: 25px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: inline mandatory;
-  scroll-padding-inline: 25px;
-}
-
-.clients-item {
-  min-width: 50%;
-  scroll-snap-align: start;
-}
-
-.clients-item img {
-  width: 100%;
-  filter: grayscale(1);
-  transition: var(--transition-1);
-}
-
-/* .clients-item img:hover { filter: grayscale(0); } */
-
 /*-----------------------------------*\
   #RESUME
 \*-----------------------------------*/
@@ -961,87 +929,14 @@ main {
   font-weight: var(--fw-400);
   text-transform: capitalize;
   line-height: 1.3;
+  text-align: center;
 }
 
 .project-category {
   color: var(--light-gray-70);
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
-}
-
-/*-----------------------------------*\
-  #SAMPLE
-\*-----------------------------------*/
-
-.samples { margin-bottom: 10px; }
-
-.sample-list {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 20px;
-}
-
-.sample-item { display: block; }
-
-.sample-img {
-  position: relative;
-  width: 100%;
-  height: 200px;
-  border-radius: 16px;
-  overflow: hidden;
-  margin-bottom: 15px;
-}
-
-.sample-img::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: transparent;
-  z-index: 1;
-  transition: var(--transition-1);
-}
-
-.sample-item:hover .sample-img::before { background: hsla(0, 0%, 0%, 0.5); }
-
-.sample-title-box {
-  --scale: 0.8;
-  background: var(--jet);
-  color: var(--orange-yellow-crayola);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(var(--scale));
-  font-size: 20px;
-  padding: 18px;
-  border-radius: 12px;
-  opacity: 0;
-  z-index: 1;
-  transition: var(--transition-1);
-}
-
-.sample-item:hover .sample-title-box {
-  --scale: 1;
-  opacity: 1;
-}
-
-.sample-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: var(--transition-1);
-}
-
-.sample-item:hover img { transform: scale(1.1); }
-
-.sample-title {
-  color: var(--white-2);
-  font-size: var(--fs-5);
-  font-weight: var(--fw-400);
-  text-transform: capitalize;
-  line-height: 1.3;
+  text-align: center;
 }
 
 /*-----------------------------------*\
@@ -1155,14 +1050,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 @media (min-width: 450px) {
 
-  /** client */
+  /** #PORTFOLIO */
 
-  .clients-item { min-width: calc(33.33% - 10px); }
-
-  /** #PORTFOLIO, SAMPLE */
-
-  .project-img,
-  .sample-img { height: auto; }
+  .project-img { height: auto; }
 
 }
 
@@ -1353,17 +1243,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: 35px;
   }
 
-  /* clients */
-
-  .clients-list {
-    gap: 50px;
-    margin: 0 -30px;
-    padding: 45px;
-    scroll-padding-inline: 45px;
-  }
-
-  .clients-item { min-width: calc(33.33% - 35px); }
-
   /** #RESUME */
 
   .timeline-list { margin-left: 65px; }
@@ -1378,9 +1257,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .skills-item:not(:last-child) { margin-bottom: 25px; }
 
-  /** #PORTFOLIO, SAMPLE */
+  /** #PORTFOLIO */
 
-  .project-img, .sample-img { border-radius: 16px; }
+  .project-img { border-radius: 16px; }
 
   /** #CONTACT */
 
@@ -1464,9 +1343,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .filter-item button.active { color: var(--orange-yellow-crayola); }
 
-  /* portfolio and sample grid */
+  /* portfolio grid */
 
-  .project-list, .sample-list { grid-template-columns: 1fr 1fr; }
+  .project-list { grid-template-columns: 1fr 1fr; }
 
   /** CONTACT */
 
@@ -1546,17 +1425,9 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .testimonials-item { min-width: calc(50% - 15px); }
 
-  /* clients */
-
-  .clients-item { min-width: calc(25% - 38px); }
-
   /** PORTFOLIO */
 
   .project-list { grid-template-columns: repeat(3, 1fr); }
-
-  /** SAMPLE*/
-
-  .sample-img { height: 230px; }
 
 }
 
