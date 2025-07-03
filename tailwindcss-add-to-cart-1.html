@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tailwindcss Add To Cart 1 - Md. Masum Biswas</title>
+
+  <!-- favicon -->
+  <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
+  <!-- tailwindcss -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <script defer>
+    sessionStorage.setItem('remove', false);
+    let currentImageIndex = 0;
+    const images = ['./assets/images/tailwindcss-add-to-cart-1-1.jpg', './assets/images/tailwindcss-add-to-cart-1-2.jpg'];
+
+    function addToCart(card) {
+      const btn = card.querySelector('button');
+      if(sessionStorage.getItem('remove') == 'true'){
+        sessionStorage.setItem('remove', false);
+      }else{
+        sessionStorage.setItem('remove', true);
+      }
+
+      btn.disabled = true;
+      btn.innerHTML = '<div class="custom-loader"></div> Loading...';
+      
+      setTimeout(() => {
+        if(sessionStorage.getItem('remove') == 'true'){
+            btn.textContent = 'Remove';
+        }else{
+            btn.textContent = 'Add To Cart';
+        }
+        btn.disabled = false;
+      }, 2000);
+    }
+
+    function changeImage(step) {
+      currentImageIndex = (currentImageIndex + step + images.length) % images.length;
+      document.querySelector('.game-image').src = images[currentImageIndex];
+      updateDots();
+    }
+
+    function updateDots() {
+      const dots = document.querySelectorAll('.nav-dot');
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('bg-white', index === currentImageIndex);
+        dot.classList.toggle('bg-opacity-30', index !== currentImageIndex);
+      });
+    }
+  </script>
+</head>
+<body class="bg-white flex items-center justify-center min-h-screen p-6">
+
+<div class="max-w-sm bg-gradient-to-br from-purple-700 to-indigo-900 rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:scale-105 hover:shadow-2xl group">
+  <div class="relative">
+    <img src="./assets/images/tailwindcss-add-to-cart-1-1.jpg" alt=" put your mouse to Play Now" class="w-full h-64 object-cover game-image transition-opacity duration-300"/>
+    
+    <!-- Image Navigation -->
+    <div class="absolute inset-0 flex items-center justify-between px-4 opacity-0 group-hover:opacity-100 transition-opacity">
+      <button onclick="changeImage(-1)" class="p-2 rounded-full bg-black/30 hover:bg-black/50">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
+        </svg>
+      </button>
+      <button onclick="changeImage(1)" class="p-2 rounded-full bg-black/30 hover:bg-black/50">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Navigation Dots -->
+    <div class="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-2">
+      
+        <div class="w-2 h-2 rounded-full bg-white nav-dot ${i === 0 ? 'bg-opacity-100' : 'bg-opacity-30'} transition-all"></div>
+      
+    </div>
+  </div>
+
+  <div class="p-6 text-white">
+    <h2 class="text-3xl font-extrabold mb-2 bg-gradient-to-r from-pink-400 via-red-500 to-yellow-500 bg-clip-text text-transparent animate-text">
+      Epic Lemon Juice
+    </h2>
+
+    <p class="mb-4 text-gray-300">
+      Dive into an epic world filled with quests, monsters, and treasure!
+    </p>
+
+    <div class="flex items-center justify-between mb-4">
+      <span class="font-semibold text-lg">$120</span>
+      <div class="flex items-center space-x-3">
+        <div class="flex items-center text-sm">
+          <svg class="w-5 h-5 text-blue-400 mr-1" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 4.435c-1.989-5.399-12-4.597-12 3.568 0 4.068 3.06 9.481 12 14.997 8.94-5.516 12-10.929 12-14.997 0-8.118-10-8.999-12-3.568z"/>
+          </svg>
+          2.5K
+        </div>
+        <div class="flex space-x-1">
+          <!-- Rating stars -->
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.977c.3.92-.755 1.688-1.54 1.118L10 13.347l-3.38 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.977a1 1 0 00-.364-1.118L3.623 9.405c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.978z"/></svg>
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.977c.3.92-.755 1.688-1.54 1.118L10 13.347l-3.38 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.977a1 1 0 00-.364-1.118L3.623 9.405c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.978z"/></svg>
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.977c.3.92-.755 1.688-1.54 1.118L10 13.347l-3.38 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.977a1 1 0 00-.364-1.118L3.623 9.405c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.978z"/></svg>
+          <svg class="w-6 h-6 text-yellow-400" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.977c.3.92-.755 1.688-1.54 1.118L10 13.347l-3.38 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.977a1 1 0 00-.364-1.118L3.623 9.405c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.978z"/></svg>
+          <svg class="w-6 h-6 text-gray-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.286 3.978a1 1 0 00.95.69h4.175c.969 0 1.371 1.24.588 1.81l-3.38 2.455a1 1 0 00-.364 1.118l1.287 3.977c.3.92-.755 1.688-1.54 1.118L10 13.347l-3.38 2.455c-.784.57-1.838-.197-1.54-1.118l1.287-3.977a1 1 0 00-.364-1.118L3.623 9.405c-.783-.57-.38-1.81.588-1.81h4.175a1 1 0 00.95-.69l1.286-3.978z"/></svg>
+        </div>
+      </div>
+    </div>
+
+    <button onclick="addToCart(this.closest('div'))"  class="w-full bg-pink-600 hover:bg-pink-700 active:bg-pink-800 transition-colors py-3 rounded-lg text-white font-semibold shadow-lg focus:outline-none focus:ring-2 focus:ring-pink-400 flex items-center justify-center">Add To Cart</button>
+  </div>
+</div>
+
+<style>
+  @keyframes text-gradient {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+  }
+  .animate-text {
+    background-size: 200% 200%;
+    animation: text-gradient 3s ease infinite;
+  }
+
+  .custom-loader {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    border: 2px solid transparent;
+    border-top-color: white;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+</style>
+
+</body>
+</html>
