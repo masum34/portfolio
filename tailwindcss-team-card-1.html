@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwindcss Team Card 1 - Md. Masum Biswas</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+    <body class="bg-white min-h-screen flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-gray-800 rounded-xl shadow-2xl max-w-md w-full overflow-hidden transition-all duration-300 hover:shadow-3xl animate-fade-in border-2 border-blue-900">
+        <div class="p-6">
+            <h2 class="text-2xl font-bold text-indigo-800 dark:text-white mb-4">Team Members</h2>
+            <div class="space-y-4">
+                <div class="flex items-center space-x-4 p-3 bg-indigo-50 dark:bg-gray-700 rounded-lg transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-600">
+                    <img src="https://i.pravatar.cc/100?img=1" alt="Sarah Johnson" class="w-12 h-12 rounded-full border-2 border-indigo-800 dark:border-blue-900">
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 dark:text-white">Sarah Johnson</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Lead Designer</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 p-3 bg-indigo-50 dark:bg-gray-700 rounded-lg transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-600">
+                    <img src="https://i.pravatar.cc/100?img=2" alt="Michael Chen" class="w-12 h-12 rounded-full border-2 border-indigo-800 dark:border-blue-900">
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 dark:text-white">Michael Chen</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Senior Developer</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-4 p-3 bg-indigo-50 dark:bg-gray-700 rounded-lg transition-all duration-300 hover:bg-indigo-100 dark:hover:bg-gray-600">
+                    <img src="https://i.pravatar.cc/100?img=3" alt="Emily Rodriguez" class="w-12 h-12 rounded-full border-2 border-indigo-800 dark:border-blue-900">
+                    <div>
+                        <h3 class="text-lg font-semibold text-indigo-800 dark:text-white">Emily Rodriguez</h3>
+                        <p class="text-sm text-gray-600 dark:text-gray-300">Product Manager</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="px-6 py-4 bg-indigo-100 dark:bg-gray-700 flex justify-between items-center">
+            <span class="text-sm text-indigo-800 dark:text-gray-300">3 team members</span>
+            <button class="bg-indigo-800 text-white px-4 py-2 rounded-lg hover:bg-blue-900 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-indigo-800 focus:ring-offset-2 dark:focus:ring-offset-gray-800">
+                Add Member
+            </button>
+        </div>
+    </div>
+
+    <style>
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in {
+            animation: fadeIn 0.5s ease-out forwards;
+        }
+    </style>
+
+    <script>
+        // Toggle dark mode based on system preference
+        if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+
+        // Add hover effect to user items
+        const userItems = document.querySelectorAll('.bg-indigo-50');
+        userItems.forEach(item => {
+            item.addEventListener('mouseover', () => {
+                item.classList.add('transform', 'scale-105');
+            });
+            item.addEventListener('mouseout', () => {
+                item.classList.remove('transform', 'scale-105');
+            });
+        });
+    </script>
+    </body>
+</html>
