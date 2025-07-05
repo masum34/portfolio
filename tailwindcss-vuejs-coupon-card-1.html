@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tailwindcss VueJs Coupon Card 1 - Md. Masum Biswas</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- vuejs -->
+    <script type="importmap">
+        {
+            "imports": {
+                "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+            }
+        }
+    </script>
+  </head>
+    <body class="bg-white min-h-screen flex items-center justify-center gap-4">
+        <div id="app" class="flex items-center justify-center gap-4">
+            <div v-for="(coupon, index) in coupons" class="container bg-gradient-to-r from-indigo-500 to-violet-500 text-white p-8 rounded-lg shadow-lg max-w-md mx-auto">
+                <div class="text-3xl font-bold mb-4">{{coupon.name}}!</div>
+                <div class="text-lg mb-4">Get <span class="text-yellow-400 font-bold">{{coupon.discount}}% OFF</span> your next purchase!</div>
+                <div class="text-base mb-4">Use coupon code:</div>
+                <div class="bg-white text-gray-800 rounded-lg px-4 py-2 flex items-center justify-between">
+                    <span class="text-2xl font-semibold">{{coupon.code}}</span>
+                    <button @click="copy(index, coupon.code)" type="button" class="bg-blue-800 text-white px-3 py-1 rounded hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500">{{coupon.button}}</button>
+                </div>
+                <div class="text-sm mt-4">
+                    <p>Valid until <span class="font-semibold">{{coupon.date}}</span></p>
+                    <p>Terms and conditions apply.</p>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script type="module">
+        import { createApp, ref } from 'vue'
+
+        createApp({
+            setup() {
+                const coupons = ref([{ name: 'New Year', code: 'YEAR2026', discount: 90, date: '31 December 2025', button: 'Copy' }, { name: 'Special Offer', code: 'SPECIAL2026', discount: 80, date: '15 January 2026', button: 'Copy' }]);
+                
+                function copy(index, text) {
+                    try {
+                        navigator.clipboard.writeText(text);
+                        coupons.value[index].button = 'Copied'
+                    } catch (err) {
+                        coupons.value[index].button = 'Copy'
+                    }
+                }
+
+                return {coupons, copy}
+            }
+        }).mount('#app')
+    </script>
+</html>
