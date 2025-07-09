@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Phone or Email or Username Login System Using Laravel Jetstream Vue JS - Md. Masum Biswas</title>
+
+    <!-- favicon -->
+    <link rel="shortcut icon" href="./assets/images/favicon.ico" type="image/x-icon">
+
+    <!-- tailwindcss -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- PrismJS CSS (for syntax highlighting) -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+
+    <!-- PrismJS JavaScript (for syntax highlighting) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/prism.min.js"></script>
+
+    <!-- PrismJS language definitions (for JavaScript, Python, etc.) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.27.0/components/prism-javascript.min.js"></script>
+
+    <!-- vuejs -->
+    <script type="importmap">
+      {
+        "imports": {
+          "vue": "https://unpkg.com/vue@3/dist/vue.esm-browser.js"
+        }
+      }
+    </script>
+
+  </head>
+  <body>
+    <div id="app" class="max-w-7xl mx-auto">
+      <main class="mt-4 mx-4 lg:mx-0">
+        <div>
+          <h2 class="text-xl sm:text-2xl lg:text-3xl font-semibold text-gray-800 leading-tight">
+            Phone or Email or Username Login System Using Laravel Jetstream Vue JS.
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-5 mt-4">
+          <div class="col-span-4 text-gray-700 text-lg leading-relaxed">
+            <p class="mb-2">
+                Creating a login system in Laravel Jetstream with Vue.js is a great way to leverage modern tools in web development. Laravel Jetstream provides an excellent starting point for authentication, and Vue.js can handle the frontend logic for your application. Here's a high-level guide to help you build it:
+            </p>
+            <h3>
+                Steps:
+            </h3>
+            <ol class="list-decimal pl-5 space-y-1 mb-2">
+                <li>
+                    <p>
+                        <strong>Modify the Authentication Logic (Backend)</strong>
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        <strong>Customize the Login Form (Frontend)</strong>
+                    </p>
+                </li>
+            </ol>
+            <hr>
+            <h3 class="my-2">
+              1. <strong>Modify the Authentication Logic (Backend)</strong>
+            </h3>
+            <p class="mb-2">
+              By default, Jetstream uses <strong>email</strong> for login. To allow login using <strong>email</strong>, <strong>username</strong>, or <strong>phone</strong>, you’ll need to customize the backend logic to check the type of input and validate accordingly.
+            </p>
+            <h4 class="mb-2">
+                Modify <code class="bg-gray-100 text-red-600 p-0.5 rounded-md">LoginController</code> (Jetstream uses Fortify for authentication)
+            </h4>
+            <p class="mb-2">
+              You need to modify Fortify’s login behavior to support multiple login methods (email, phone, or username).
+            </p>
+            <h4 class="font-bold mb-2">
+                Step 1: Publish Fortify's configuration file
+            </h4>
+            <div class="bg-[#2d2d2d] rounded-md">
+              <div class="flex justify-between items-center text-gray-300 py-2 px-4 border-b border-gray-300">
+                <strong>PHP</strong>
+                <svg @click="copy('clipboard-1')" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer clipboard-1"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" /></svg>
+              </div>
+              <pre class="rounded-md"><code class="language-javascript clipboard-1">php artisan vendor:publish --provider="Laravel\Fortify\FortifyServiceProvider"</code></pre>
+            </div>
+            <p class="mb-2">This will publish the <code class="bg-gray-100 text-red-600 p-0.5">config/fortify.php</code> configuration file. However, we will need to customize the <code class="bg-gray-100 text-red-600 p-0.5">Fortify</code> authentication logic.</p>
+            <h4 class="font-bold mb-2">
+                Step 2: Modify the login request logic
+            </h4>
+            <p class="mb-2">
+                In <code class="bg-gray-100 text-red-600 p-0.5">app/Actions/Fortify/AuthenticateUser.php</code>, modify the authentication logic. You’ll need to validate the login attempt by checking whether the input is an email, username, or phone number.
+            </p>
+            <p class="mb-2">
+                For instance, you can create a custom <code class="bg-gray-100 text-red-600 p-0.5">authenticate</code> method to check the type of input:
+            </p>
+            <h5 class="font-bold mb-2">
+                Example: Modify Login Logic in <code class="bg-gray-100 text-red-600 p-0.5">AuthenticateUser.php</code>
+            </h5>
+            <div class="bg-[#2d2d2d] rounded-md">
+              <div class="flex justify-between items-center text-gray-300 py-2 px-4 border-b border-gray-300">
+                <strong>PHP</strong>
+                <svg @click="copy('clipboard-2')" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 cursor-pointer clipboard-2"><path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184" /></svg>
+              </div>
+              <pre class="rounded-md"><code class="language-javascript clipboard-2">namespace App\Actions\Fortify;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+class AuthenticateUser
+{
+    public function authenticate($input)
+    {
+        $input = trim($input); // Remove extra spaces
+        
+        // Check if it's a phone number
+        $isPhone = preg_match('/^[0-9]{10}$/', $input);
+        
+        // Check if it's an email
+        $isEmail = filter_var($input, FILTER_VALIDATE_EMAIL);
+        
+        // Check if it's a username (just check if the input is not empty or too short)
+        $isUsername = strlen($input) &gt; 3 &amp;&amp; !is_numeric($input);
+        $user = null;
+        if ($isEmail) {
+            $user = \App\Models\User::where('email', $input)-&gt;first();
+        } elseif ($isPhone) {
+            $user = \App\Models\User::where('phone', $input)-&gt;first(); // Assuming you have a 'phone' column
+        } elseif ($isUsername) {
+            $user = \App\Models\User::where('username', $input)-&gt;first(); // Assuming you have a 'username' column
+        }
+        if ($user &amp;&amp; Hash::check($input['password'], $user-&gt;password)) {
+            return $user;
+        }
+        throw ValidationException::withMessages([
+            'email' =&gt; ['These credentials do not match our records.'],
+        ]);
+    }
+}</code></pre>
+            </div>
+
+            <p class="mb-2">
+              This checks the login field to determine if it's an email, username, or phone number, and then it checks if the entered password matches the stored password for the corresponding field.
+            </p>
+            <p class="mb-2">
+              You would likely want to adjust your <code class="bg-gray-100 text-red-600 p-0.5">login</code> method to accept the additional input and validation.
+            </p>
+            <h3 class="mb-2">
+                3. <strong>Customize the Login Form (Frontend)</strong>
+            </h3>
+            <p class="mb-2">
+                Now, let's modify the Vue.js component for login. This will be located in <code class="bg-gray-100 text-red-600 p-0.5">resources/js/Pages/Auth/Login.vue</code>. Update it to handle <strong>phone, email, or username</strong>.
+            </p>
+            <p class="mb-2">
+                Here’s an example of the updated <code class="bg-gray-100 text-red-600 p-0.5">Login.vue</code>:
+            </p>
+
+            <div class="flex font-poppins items-center justify-center mb-2">
+              <div class="bg-gradient-to-r from-blue-500 to-purple-500 rounded-[26px]">
+                  <div class="border-[20px] border-transparent rounded-[20px] bg-white shadow-lg p-4 m-2" >
+                    <h1 class="pb-6 font-bold text-5xl text-center cursor-default">Login</h1>
+                    <form action="#" method="post" class="space-y-4">
+                      <div v-if="isUse == 'email'">
+                        <label for="email" class="mb-2 text-lg">Email</label>
+                        <input id="email" class="border p-3 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300" type="email" placeholder="Email" required />
+                      </div>
+                      <div v-if="isUse == 'phone'">
+                        <label for="phone" class="mb-2 text-lg">Phone</label>
+                        <input id="phone" class="border p-3 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300" type="text" placeholder="Phone" required />
+                      </div>
+                      <div v-if="isUse == 'username'">
+                        <label for="username" class="mb-2 text-lg">Username</label>
+                        <input id="username" class="border p-3 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300" type="text" placeholder="Username" required />
+                      </div>
+                      <div>
+                        <div class="flex justify-between items-center gap-2">
+                          <label for="password" class="mb-2 text-lg">Password</label>
+                          <span v-if="isUse == 'username'" @click="instead('email')" class="text-sm text-blue-400 cursor-pointer">Instead Email?</span>
+                          <span v-if="isUse == 'email'" @click="instead('phone')" class="text-sm text-blue-400 cursor-pointer">Instead Phone?</span>
+                          <span v-if="isUse == 'phone'" @click="instead('username')" class="text-sm text-blue-400 cursor-pointer">Instead Username?</span>
+                        </div>
+                        <input id="password" class="border p-3 mb-2 shadow-md placeholder:text-base border-gray-300 rounded-lg w-full focus:scale-105 ease-in-out duration-300" type="password" placeholder="Password" required />
+                      </div>
+                      <div class="flex justify-between items-center">
+                        <div class="flex items-center">
+                          <input
+                            type="checkbox"
+                            id="rememberMe"
+                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"
+                          />
+                          <label for="rememberMe" class="ml-2 text-sm text-gray-600">
+                            Remember me
+                          </label>
+                        </div>
+                        <a class="text-sm group text-blue-400 transition-all duration-100 ease-in-out" href="#" >
+                          <span class="bg-left-bottom ml-1 bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                            Forgot Password?
+                          </span>
+                        </a>
+                      </div>
+                      <button class="bg-gradient-to-r from-blue-500 to-purple-500 shadow-lg mt-6 p-2 text-white rounded-lg w-full hover:scale-105 hover:from-purple-500 hover:to-blue-500 transition duration-300 ease-in-out" type="submit">Login</button>
+                    </form>
+                    <div class="flex flex-col mt-4 items-center justify-center text-sm">
+                      <h3>
+                        <span class="cursor-default">Don't have an account?</span>
+                        <a class="group text-blue-400 transition-all duration-100 ease-in-out" href="#" >
+                          <span class="bg-left-bottom ml-1 bg-gradient-to-r from-blue-400 to-blue-400 bg-[length:0%_2px] bg-no-repeat group-hover:bg-[length:100%_2px] transition-all duration-500 ease-out">
+                            Register
+                          </span>
+                        </a>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <p class="mb-2">
+                In this Vue component, users can enter their <strong>email, phone number</strong>, or <strong>username</strong> in the same input field. The <code class="bg-gray-100 text-red-600 p-0.5">submitForm</code> method will send this data along with the password to the backend.
+            </p>
+            
+          </div>
+
+          <div class="mt-4 lg:mt-0 max-w-screen-lg">
+            <div class="p-2 border rounded">
+              <div class="flex">
+                <img src="./assets/images/masum.png"
+                  class="h-10 w-10 rounded-full mr-2 object-cover" />
+                <div>
+                  <p class="font-semibold text-gray-700 text-sm"> Md. Masum Biswas </p>
+                  <p class="font-semibold text-gray-600 text-xs"> Full Stack Web Developer </p>
+                </div>
+              </div>
+              <p class="text-gray-700 py-2">
+                I'm Full Stack Web Developer from Char Ruppur, Bangladesh. I do some remote work in my spare time.
+              </p>
+              <a href="./index.html" class="p-2 text-gray-100 bg-green-700 flex w-full items-center justify-center rounded">
+                Follow
+              </a>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module">
+      import { createApp, ref } from 'vue'
+      createApp({
+        setup() {
+          const isUse = ref('email');
+
+          function instead(number) {
+            isUse.value = number;
+          }
+
+          const clipboard = ref('');
+                
+          function copy(index) {
+            clipboard.value = index;
+            const text = document.getElementsByClassName(clipboard.value)[1].innerText;
+            if(text){
+              navigator.clipboard.writeText(text);
+              const svg = document.getElementsByClassName(clipboard.value)[0].innerHTML;
+              if(svg == '<path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"></path>'){
+                document.getElementsByClassName(clipboard.value)[0].innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5" />';
+                document.getElementsByClassName(clipboard.value)[0].classList.add("text-green-600");
+              }
+              setTimeout(() => {
+                const svg = document.getElementsByClassName(clipboard.value)[0].innerHTML;
+                  if(svg == '<path stroke-linecap="round" stroke-linejoin="round" d="m4.5 12.75 6 6 9-13.5"></path>'){
+                    document.getElementsByClassName(clipboard.value)[0].innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M15.666 3.888A2.25 2.25 0 0 0 13.5 2.25h-3c-1.03 0-1.9.693-2.166 1.638m7.332 0c.055.194.084.4.084.612v0a.75.75 0 0 1-.75.75H9a.75.75 0 0 1-.75-.75v0c0-.212.03-.418.084-.612m7.332 0c.646.049 1.288.11 1.927.184 1.1.128 1.907 1.077 1.907 2.185V19.5a2.25 2.25 0 0 1-2.25 2.25H6.75A2.25 2.25 0 0 1 4.5 19.5V6.257c0-1.108.806-2.057 1.907-2.185a48.208 48.208 0 0 1 1.927-.184"></path>';
+                    document.getElementsByClassName(clipboard.value)[0].classList.remove("text-green-600");
+                }
+              }, 2000);
+            }
+          }
+
+          return {isUse, instead, clipboard, copy}
+        }
+      }).mount('#app')
+    </script>
+  </body>
+</html>
