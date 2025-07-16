@@ -1,7 +1,15 @@
-<img src="./assets/images/masum.png" alt="masum" style="display:block; margin: 0 auto; border-radius: 50%; max-width: 20%;"/>
+![Avatar](https://masum34.github.io/portfolio/assets/images/masum.png#avatar)
+<style>
+img[src$="#avatar"] {
+  display: block;
+  margin: 0 auto;
+  border-radius: 50%;
+  max-width: 20%;
+}
+</style>
 
 <div>
-    <h3 style="text-align:center; margin-top: 0px;">Md. Masum Biswas</h3>
+    <h3 style="text-align:center; margin-top: -10px;">Md. Masum Biswas</h3>
 </div>
 
 <div align="center" style="margin-top: -10px">
@@ -64,7 +72,7 @@ I'm Full Stack Web Developer from Char Ruppur, Bangladesh, currently working as 
             <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="./assets/images/git.svg" alt="git" width="40" height="40"/> </a>
         </td>
         <td align="center">
-            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="./assets/images/bash.svg" alt="bash" width="40" height="43"/> </a>
+            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="./assets/images/bash.png" alt="bash" width="40" height="43"/> </a>
         </td>
         <td align="center">
             <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="./assets/images/linux.svg" alt="linux" width="40" height="40"/> </a>
@@ -73,7 +81,7 @@ I'm Full Stack Web Developer from Char Ruppur, Bangladesh, currently working as 
             <a href="https://postman.com" target="_blank" rel="noreferrer"> <img src="./assets/images/postman.svg" alt="postman" width="40" height="40"/> </a>
         </td>
         <td align="center">
-            <a href="https://www.microsoft.com/" target = "_blank" rel="noreferrer"> <img src="./assets/images/windows.svg" alt="windows" width="40" height="40"> </a>
+            <a href="https://www.microsoft.com/" target = "_blank" rel="noreferrer"> <img src="./assets/images/windows.png" alt="windows" width="40" height="40"> </a>
         </td>
         <td align="center">
             <a href="https://www.mysql.com/" target="_blank" rel="noreferrer"> <img src="./assets/images/mysql.svg" alt="mysql" width="40" height="40"/> </a>
