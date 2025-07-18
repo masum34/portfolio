@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="https://images.weserv.nl/?url=./assets/images/masum.png?v=4&h=200&w=200&fit=cover&mask=circle&maxage=7d" alt="masum"/>
+    <img src="https://images.weserv.nl/?url=masum34.github.io/portfolio/assets/images/masum.png?v=4&h=200&w=200&fit=cover&mask=circle&maxage=7d" alt="masum"/>
 </div>
 
 <div align="center">
