@@ -1,21 +1,9 @@
-![Avatar](https://masum34.github.io/portfolio/assets/images/masum.png#avatar)
-<style>
-img[src$="#avatar"] {
-  display: block;
-  margin: 0 auto;
-  border-radius: 50%;
-  max-width: 20%;
-}
-</style>
-
-<div>
-    <h3 style="text-align:center; margin-top: -10px;">Md. Masum Biswas</h3>
+<div align="center">
+    <img src="https://images.weserv.nl/?url=./assets/images/masum.png?v=4&h=200&w=200&fit=cover&mask=circle&maxage=7d" alt="masum"/>
 </div>
 
-<div align="center" style="margin-top: -10px">
-    <p style="background-color: #e2e8f0; padding: 4px; border-radius: 10px; width: 200px">
-        Full Stack Web Developer
-    </p>
+<div align="center">
+    <img src="./assets/images/profile.svg" alt="profile">
 </div>
 
 I'm Full Stack Web Developer from Char Ruppur, Bangladesh, currently working as Full Stack Web Developer (Remote) at Sansmo International Limited. I do some other remote work in my spare time. I enjoy turning complex problems into simple and beautiful. 
@@ -72,7 +60,7 @@ I'm Full Stack Web Developer from Char Ruppur, Bangladesh, currently working as 
             <a href="https://git-scm.com/" target="_blank" rel="noreferrer"> <img src="./assets/images/git.svg" alt="git" width="40" height="40"/> </a>
         </td>
         <td align="center">
-            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="./assets/images/bash.png" alt="bash" width="40" height="43"/> </a>
+            <a href="https://www.gnu.org/software/bash/" target="_blank" rel="noreferrer"> <img src="https://github.com/iamzehan/FastAPI-Beanie-MongoDB/assets/43857150/1965d7c4-ae5d-46b9-8c5e-fae7466ec91e" alt="bash" width="40" height="43"/> </a>
         </td>
         <td align="center">
             <a href="https://www.linux.org/" target="_blank" rel="noreferrer"> <img src="./assets/images/linux.svg" alt="linux" width="40" height="40"/> </a>
